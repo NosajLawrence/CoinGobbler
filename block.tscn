@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://u166fk3s8mxy"]
+
+[ext_resource type="Texture2D" uid="uid://d37ugbge7ukma" path="res://tiles_packed.png" id="1_icmai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ne8a"]
+size = Vector2(18, 18)
+
+[node name="Block" type="Node2D"]
+
+[node name="World Blocks" type="StaticBody2D" parent="."]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="World Blocks"]
+texture = ExtResource("1_icmai")
+region_enabled = true
+region_rect = Rect2(126, 36, 18, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Blocks"]
+shape = SubResource("RectangleShape2D_5ne8a")

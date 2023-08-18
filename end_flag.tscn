@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://2t548txhb75b"]
+
+[ext_resource type="Script" path="res://end_flag.gd" id="1_eg0ib"]
+[ext_resource type="Texture2D" uid="uid://d37ugbge7ukma" path="res://tiles_packed.png" id="1_i0onh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5t3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyh8u"]
+atlas = ExtResource("1_i0onh")
+region = Rect2(198, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c68wr"]
+atlas = ExtResource("1_i0onh")
+region = Rect2(216, 90, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40hd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyh8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c68wr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="End Flag" type="Node2D"]
+script = ExtResource("1_eg0ib")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("RectangleShape2D_y5t3t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_40hd1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

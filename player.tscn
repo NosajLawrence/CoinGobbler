@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://druj5ye3idcje"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_rplgx"]
+[ext_resource type="SpriteFrames" uid="uid://c17kfh1y4e4pi" path="res://Player_Green_Skin.tres" id="2_3f1rw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2jto"]
+size = Vector2(14.5842, 18.0567)
+
+[node name="Player" type="CharacterBody2D"]
+light_mask = 3
+visibility_layer = 3
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_rplgx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_3f1rw")
+animation = &"r_jumping_green"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.107405, 2.82598)
+shape = SubResource("RectangleShape2D_f2jto")
+
+[node name="LadderCheck" type="RayCast2D" parent="."]
+position = Vector2(0.117985, -5.78123)
+target_position = Vector2(0.0140686, 22.5399)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
